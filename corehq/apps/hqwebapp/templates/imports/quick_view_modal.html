@@ -1,0 +1,14 @@
+{% load hq_shared_tags %}
+<div class="modal fade" id="overview_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">CommCare Quick View</h4>
+      </div>
+        <iframe id="quick-view-iframe" class="" frameborder="0" src="{% url "overview" %}"></iframe>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

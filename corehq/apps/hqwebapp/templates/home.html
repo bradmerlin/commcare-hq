@@ -5,6 +5,10 @@
     <script>
         $(function() {
             $('#main_container').removeClass('container');
+
+            if (window.location.hash === '#quickview') {
+                $('#overview_modal').modal('show');
+            }
         });
     </script>
 {% endblock %}
@@ -20,6 +24,17 @@
         }
         body {
             background-color: #f5f5ff;
+        }
+        body .modal {
+            /* new custom width */
+            width: 880px;
+            /* must be half of the width, minus scrollbar on the left (30px) */
+            margin-left: -410px;
+            height: 585px;
+        }
+        #quick-view-iframe {
+            height: 430px;
+            width: 840px;
         }
     </style>
 {% endblock %}
@@ -66,7 +81,7 @@
         </div>
     </div>
     {% endblocktrans %}
-
+    {% include "imports/quick_view_modal.html" %}
     <div style="padding-top:1em; text-align: right; clear:both; margin-top:1em;">
         <p>
             <span class="attention">{% trans "Want to learn more?" %}</span>

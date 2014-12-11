@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.views.generic import TemplateView
 
 urlpatterns = patterns('corehq.apps.hqwebapp.views',
     url(r'^homepage/$', 'redirect_to_default', name='homepage'),
@@ -6,6 +7,7 @@ urlpatterns = patterns('corehq.apps.hqwebapp.views',
     url(r'^crossdomain.xml$', 'yui_crossdomain', name='yui_crossdomain'),
     (r'^serverup.txt$', 'server_up'),
     (r'^change_password/$', 'password_change'),
+    url(r'^overview/$', TemplateView.as_view(template_name='hqwebapp/quick_view.html'), name='overview'),
 
     url(r'^no_permissions/$', 'no_permissions', name='no_permissions'),
 

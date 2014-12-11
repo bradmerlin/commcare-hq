@@ -1,0 +1,423 @@
+body {
+    font-family:Arial,Helvetica,FreeSans,sans-serif;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    font-size: 100%;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none outside none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none;
+}
+:focus {
+    outline: 0 none;
+}
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+* html .clearfix {
+    height: 1%;
+}
+.clearfix {
+    display: block;
+}
+body {
+    font: 13px/1.231 arial,helvetica,clean,sans-serif;
+}
+select, input, button, textarea, button {
+    font: 99% arial,helvetica,clean,sans-serif;
+}
+table {
+    font-size: inherit;
+}
+pre, code, kbd, samp, tt {
+    font-family: monospace;
+    line-height: 100%;
+}
+
+  ul.def {
+      margin-top: 10px;        
+  }                    
+  
+ul.def li {
+      list-style: disc inside;
+    margin-left: 10px;
+    line-height: 20px;
+}
+
+
+.two-col {
+   margin: 15px 0;
+}
+#whats-new-wrapper {                                             
+width: 835px;
+/*height: 428px;*/
+}
+
+h2 {
+    color:#404040;
+    background: #f0f0f0;
+    font-size: 18px;
+    padding: 18px;
+    width: 100%;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 24px;
+    color: #000;
+    font-weight: normal;
+    padding: 0 0 5px;
+    border-bottom: 1px solid #e0e0e0;
+    /*background: url() no-repeat 0 right;*/
+/*    background: url(/en/dms/wac/images/gears.png) no-repeat right bottom;*/
+  width:805px;
+}
+
+.two-col h3 {
+  width: auto;
+  border: none;
+  margin-bottom: 25px;
+}
+
+.two-col p {
+  margin-bottom: 25px;
+}
+
+a, .arrow {
+    color: #326ca6;
+    text-decoration: none;    
+}
+
+.arrow {
+  padding: 0 8px;
+  font-size: 83%;
+  position: relative;
+  bottom: 1px;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+div.center {
+    clear:both;
+    text-align: center;
+    margin: 91px 0 0;
+    display:block;
+width:798px;  
+}
+
+p.center  {
+  font-size:18px;  
+  margin:25px 0 0; 
+  text-align: center;
+    display: block;
+}
+
+ul.intro-feature-highlights {
+    overflow: hidden;
+    margin: 50px 0 0 45px;
+}   
+
+.panel ul.column-count-4 {
+  margin-left:15px;
+}
+
+.panel ul.column-count-4 li {
+  margin-right: 15px;
+}                      
+                 
+.panel ul.column-count-3 li{
+  margin-right: 80px;
+}
+                    
+.panel ul.column-count-2 {
+  margin-left: 142px;
+}
+
+.panel ul.column-count-2 li {
+  margin-right:145px;
+}     
+
+ul.intro-feature-highlights li a {
+    display:block;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+ul.intro-feature-highlights li {
+    float: left;
+    display:inline;
+    width: 180px;
+    margin-right: 85px;
+    text-align: center;
+}
+
+ul.intro-feature-highlights li.last {
+    margin-right: 0;
+}
+
+ul.intro-feature-highlights li img {
+    height: 180px;
+    width: 180px;
+    display:block;
+    padding-bottom:10px;
+}
+
+ol{
+
+    list-style: decimal inside;
+    padding-left:0;
+    margin-bottom: 30px;
+}
+
+ol li {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+ol li h4 {
+    font-weight: bold;
+    font-size: 16px;
+    display: inline;
+}
+
+ol li span {
+    display:block;
+    font-size:13px;
+    padding-top: 4px;
+    font-weight: normal;
+}
+
+#whats-new-footer {
+
+    border-top: 1px solid #e0e0e0;
+    font-size:12px;
+    color: #686868;
+    padding: 18px 13px;
+    clear:both;
+}
+
+#whats-new-footer .opt-out span {
+    font-size:11px;
+}
+
+#whats-new-footer .close-window {
+    text-align: right;
+}
+
+#whats-new-footer form {
+    float:left;
+    width: 500px;
+}
+
+.two-col {
+    overflow:hidden;
+/*    margin: 35px 0;*/
+    position: relative;
+    min-height: 300px;
+}
+
+.two-col .column {
+    float:left;
+    width: 355px;
+}
+
+.two-col .column.last {
+    width: 432px;
+    float:right;
+}
+
+.navigation {
+    position: absolute;
+    bottom: 0;
+  left:-8px;
+}
+
+.center .navigation {
+  left:30px;
+  bottom:65px;
+}
+
+.navigation .pipe {
+    color: #ccc;
+}                  
+
+.last-panel .pipe, .last-panel .next, .last-panel .arrow {
+  display:none;
+}
+
+
+.panel .full-panel {
+    margin:130px 0 0;
+}
+
+.panel .full-panel .center {
+    margin: 20px 0;
+}
+     
+
+.panel {
+    padding: 0 0 0 10px;
+/*    height: 380px;*/
+    position: relative;
+}
+
+/*For the slider functionality*/
+#slider {
+  width: 820px;
+  margin: 0 auto;
+  position: relative;
+/*height: 328px;*/
+}
+
+.scroll {
+/*  height: 390px;*/
+  overflow: hidden;
+  position: relative; 
+  clear: left;
+} 
+
+.scrollContainer {
+  width: 4250px;
+}
+
+.scrollContainer div.panel {
+/*  height: 210px;*/
+  width: 830px;
+}     
+
+
+
+.emailInput {  
+  background: #F0F0F0;
+  color: black;
+  height: 40px;
+  padding-top: 10px;
+  font-size: 14px;
+  width: 802px;
+  margin-left: 15px;
+  margin-top: -5px;  
+  position: relative;
+} 
+
+.emailInput.hasNote {
+  height: 69px;
+}
+
+.emailInput input.userEmail {
+  border: 1px solid #BBB;
+/*  height: 22px;*/
+  width: 235px;
+  border-radius: 4px;
+  margin-left: 3px;
+  padding: 6px;
+  font-size: 12px;
+}   
+
+.emailInputInner {
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.formError {
+  display: block;
+  color: #C00;
+  font-weight: bold;
+  font-size: 10px;
+  float: right;
+  margin-right: 94px;  
+}
+
+.emailInput .note {
+  color: #404040;
+  font-size: 12px;
+  padding-top: 13px;
+  display: block;
+}
+
+.signUpButton {
+  border: 1px solid #326ca6;
+  border-radius: 5px;
+  height: 30px;
+  background-color: #3B7FC4;
+  background-image: -webkit-linear-gradient(top, #3B7FC4, #336EA9);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.signUpButton:hover {
+  background-color: #4796E6;
+  background-image: -webkit-linear-gradient(top, #4796E6, #3873AF);
+  cursor: pointer;
+}
+
+#spreadsheet_thank_you {
+  padding-top: 8px;
+}
+
+#spreadsheet_thank_you p{
+margin-bottom: 13px;
+}
+
+#spreadsheet_thank_you .arrow {
+  padding-left: 3px;
+}
+
+.last-panel {
+  min-height: 330px;
+}
+
+.defaultEmail {
+  color: #a5a5a5;
+}
+
+    ul.def {
+/*        margin-top: 10px;        */
+margin-top: -22px;
+margin-bottom: 15px;
+    }
+  .ace-touchpoint a{
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: block;
+    width: 780px; 
+    text-align:center;
+    margin-left:15px;
+    border-radius: 4px;
+    color: #333;
+	margin-top: -6px;
+  }  
