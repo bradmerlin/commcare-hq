@@ -653,6 +653,10 @@ class GenericReportView(CacheableRequestMixIn):
         return True
 
     @classmethod
+    def display_in_dropdown(cls, domain=None, project=None, user=None):
+        return False
+
+    @classmethod
     def get_subpages(cls):
         """
         List of subpages to show in sidebar navigation.
