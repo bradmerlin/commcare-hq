@@ -19,6 +19,7 @@
     window.feature_previews.CALC_XPATHS = {{ request|feature_preview_enabled:"CALC_XPATHS"|BOOL }};
     window.toggles.MM_CASE_PROPERTIES = {{ request|toggle_enabled:"MM_CASE_PROPERTIES"|BOOL }};
     window.toggles.GRAPH_CREATION = {{ request|toggle_enabled:"GRAPH_CREATION"|BOOL }};
+    window.toggles.CASE_LIST_CUSTOM_XML = {{ request|toggle_enabled:"CASE_LIST_CUSTOM_XML"|BOOL }};
     </script>
     <script src="{% static 'app_manager/js/detail-screen-config.js' %}"></script>
 {% endblock %}
@@ -247,6 +248,7 @@
     </div>
 
     {% for detail in details %}
+    {# rename this <detail.type>-list-screen-config-tab or something like that #}
     <div class="tab-pane" id="{{ detail.type }}-detail-screen-config-tab">
         {% include 'app_manager/partials/case_list.html' %}
     </div>
