@@ -590,6 +590,7 @@ class SetupTab(UITab):
             LocationImportView,
             LocationImportStatusView,
             LocationSettingsView,
+            LocationFieldsView,
         )
 
         locations_config = {
