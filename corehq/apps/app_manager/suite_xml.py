@@ -9,7 +9,8 @@ from lxml import etree
 from eulxml.xmlmap import StringField, XmlObject, IntegerField, NodeListField, NodeField, load_xmlobject_from_string
 from corehq.apps.app_manager.exceptions import UnknownInstanceError, ScheduleError
 from corehq.apps.app_manager.templatetags.xforms_extras import trans
-from corehq.apps.app_manager.const import CAREPLAN_GOAL, CAREPLAN_TASK, SCHEDULE_LAST_VISIT, SCHEDULE_PHASE
+from corehq.apps.app_manager.const import CAREPLAN_GOAL, CAREPLAN_TASK, SCHEDULE_LAST_VISIT, SCHEDULE_PHASE, \
+    CASE_ID_AUTOGEN
 from corehq.apps.app_manager.xpath import ProductInstanceXpath
 from corehq.apps.hqmedia.models import HQMediaMapItem
 from .exceptions import MediaResourceError, ParentModuleReferenceError, SuiteValidationError
@@ -405,6 +406,14 @@ class Field(OrderedXmlObject):
     background = NodeField('background/text', Text)
 
 
+class Action(OrderedXmlObject):
+    ROOT_NAME = 'action'
+    ORDER = ('display', 'stack')
+
+    stack = NodeField('stack', Stack)
+    display = NodeField('display', Display)
+
+
 class DetailVariable(XmlObject):
     ROOT_NAME = '_'
     function = XPathField('@function')
@@ -442,6 +451,7 @@ class Detail(IdNode):
 
     title = NodeField('title/text', Text)
     fields = NodeListField('field', Field)
+    action = NodeField('action', Action)
     details = NodeListField('detail', "self")
     _variables = NodeField('variables', DetailVariableList)
 
@@ -879,6 +889,24 @@ class SuiteGenerator(SuiteGeneratorBase):
                     detail_type=detail_type, *column_info
                 ).fields
                 d.fields.extend(fields)
+
+            if module.module_type == 'basic' and not module.parent_select.active and \
+                    module.case_list_form.form_id and detail_type.endswith('short'):
+                # add form action to detail
+                form = module.get_form_by_unique_id(module.case_list_form.form_id)
+                d.action = Action(
+                    display=Display(
+                        text=Text(locale_id=self.id_strings.case_list_form_locale(module)),
+                        media_image=module.case_list_form.media_image,
+                        media_audio=module.case_list_form.media_audio,
+                    ),
+                    stack=Stack()
+                )
+                frame = PushFrame()
+                frame.add_command(self.id_strings.form_command(form))
+                frame.add_datum(StackDatum(id=CASE_ID_AUTOGEN, value='uuid()'))
+                d.action.stack.add_frame(frame)
+
             try:
                 if not self.app.enable_multi_sort:
                     d.fields[0].sort = 'default'
@@ -1225,6 +1253,20 @@ class SuiteGenerator(SuiteGeneratorBase):
             'case_autoload.{0}.case_missing'.format(mode),
         )
 
+    def configure_entry_as_case_list_form(self, module, form, entry):
+        entry.datums.append(SessionDatum(id=CASE_ID_AUTOGEN, function='uuid()'))
+        entry.stack = Stack()
+        case_id = session_var(CASE_ID_AUTOGEN)
+        case_count = CaseIDXPath(case_id).case().count()
+        frame_case_created = CreateFrame(if_clause='{} > 0'.format(case_count))
+        frame_case_created.add_command(self.id_strings.menu(module))
+        frame_case_created.add_datum(StackDatum(id='case_id', value=case_id))
+        entry.stack.add_frame(frame_case_created)
+
+        frame_case_not_created = CreateFrame(if_clause='{} = 0'.format(case_count))
+        frame_case_not_created.add_command(self.id_strings.menu(module))
+        entry.stack.add_frame(frame_case_not_created)
+
     def configure_entry_module_form(self, module, e, form=None, use_filter=True, **kwargs):
         def case_sharing_requires_assertion(form):
             actions = form.active_actions()
@@ -1238,6 +1280,8 @@ class SuiteGenerator(SuiteGeneratorBase):
 
         if not form or form.requires == 'case':
             self.configure_entry_module(module, e, use_filter=True)
+        elif form and module.case_list_form.form_id and module.case_list_form.form_id == form.get_unique_id():
+            self.configure_entry_as_case_list_form(module, form, e)
 
         if form and self.app.case_sharing and case_sharing_requires_assertion(form):
             self.add_case_sharing_assertion(e)
