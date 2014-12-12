@@ -63,7 +63,8 @@
                     return $('header').outerHeight() + 
                         $('.hq-page-header-container').outerHeight();
                 }
-            }
+            },
+            commCareVersion: '{{ app.build_spec.version }}'
         };
 
         define("jquery", [], function () { return window.jQuery; });
