@@ -1269,10 +1269,10 @@ def form_multimedia_export(request, domain):
         return HttpResponseBadRequest()
 
     def filename(form, question_id, extension):
+        meta = form['form'].get('meta', {'username': 'unknown user'})
         return "%s-%s-%s-%s%s" % (form['form'].get('@name', 'unknown form'),
                                   unidecode(question_id),
-                                  form['form']['meta'].get('username',
-                                                           'unknown user'),
+                                  meta['username'],
                                   form['_id'], extension)
 
     if not app_id:
